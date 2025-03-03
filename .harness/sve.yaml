@@ -1,0 +1,8 @@
+environment:
+  name: sve
+  identifier: sve
+  description: ""
+  tags: {}
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: VJnewproject

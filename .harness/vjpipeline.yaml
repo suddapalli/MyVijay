@@ -1,0 +1,39 @@
+pipeline:
+  name: vjpipeline
+  identifier: vjpipeline
+  projectIdentifier: VJnewproject
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1741015816810
+        repoName: https://github.com/suddapalli/MyVijay.git
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushECR
+                  name: BuildAndPushECR_1
+                  identifier: BuildAndPushECR_1
+                  spec:
+                    connectorRef: account.VJharness
+                    region: ca-central-1
+                    account: "039612869963"
+                    imageName: vjecrimage
+                    tags:
+                      - firstimage

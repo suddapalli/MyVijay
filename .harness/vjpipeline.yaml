@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.Github_OAuth_1741015816810
-        repoName: https://github.com/suddapalli/MyVijay
+        repoName: https://github.com/suddapalli/harness-ci-example.git
         build: <+input>
         sparseCheckout: []
   stages:

@@ -8,8 +8,9 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.Github_OAuth_1741015816810
-        repoName: https://github.com/suddapalli/MyVijay.git
+        repoName: https://github.com/suddapalli/MyVijay
         build: <+input>
+        sparseCheckout: []
   stages:
     - stage:
         name: Build

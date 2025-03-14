@@ -46,7 +46,11 @@ jobs:
         eksctl create cluster --name Vj-cluster --region us-west-1 --nodegroup-name my-nodes --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
 
     - name: Update kubeconfig
-      run: aws eks update-kubeconfig --name my-cluster --region us-west-1
+      run: aws eks update-kubeconfig --name my-cluster --region us-west-2
+      
+    - name: Create ECR repository
+      run: |
+          aws ecr create-repository --repository-name vj-repo --region us-west-2 || true
 
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -71,7 +75,7 @@ jobs:
     - name: Build, tag, and push Docker image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: myapp
+        ECR_REPOSITORY: vj-repo
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .

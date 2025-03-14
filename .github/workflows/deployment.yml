@@ -18,7 +18,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-1
+        aws-region: us-west-2
 
     - name: Install kubectl
       run: |
@@ -43,7 +43,7 @@ jobs:
     
     - name: Provision EKS Cluster
       run: |
-        eksctl create cluster --name Vj-cluster --region us-west-1 --nodegroup-name my-nodes --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
+        eksctl create cluster --name Vj-cluster --region us-west-2 --nodegroup-name my-nodes --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
 
     - name: Update kubeconfig
       run: aws eks update-kubeconfig --name my-cluster --region us-west-2

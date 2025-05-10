@@ -74,11 +74,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
       with:
         mask-password: false 
-        role-to-assume: arn:aws:iam::039612869963:role/my-github-actions-role
-        AWS-REGION: us-west-2
-
+        
     - name: Build, tag, and push Docker image
       env:
+        AWS-REGION: us-west-2
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: vj-repo
         IMAGE_TAG: ${{ github.sha }}

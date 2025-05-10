@@ -41,9 +41,9 @@ jobs:
 
         sudo mv /tmp/eksctl /usr/local/bin
     
-    - name: Provision EKS Cluster
-      run: |
-        eksctl create cluster --name Vijay-cluster1 --region us-west-2 --nodegroup-name my-nodes --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
+  # - name: Provision EKS Cluster
+  #    run: |
+  #     eksctl create cluster --name Vijay-cluster1 --region us-west-2 --nodegroup-name my-nodes --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
 
     - name: Update kubeconfig
       run: aws eks update-kubeconfig --name Vijay-cluster1 --region us-west-2

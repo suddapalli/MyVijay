@@ -16,8 +16,10 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ 
+        assume-roles: arn:aws:iam::750187922415:role/GihubIODCrole
         aws-region: us-west-2
 
     - name: Install kubectl
@@ -105,3 +107,4 @@ jobs:
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
         kubectl set image deployment/myapp-deployment myapp=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+

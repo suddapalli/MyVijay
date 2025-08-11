@@ -20,7 +20,7 @@ jobs:
 #        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
  
         role-to-assume: arn:aws:iam::750187922415:role/GihubIODCrole
-        aws-region: us-west-2
+        aws-region: us-east-1
 
     - name: Install kubectl
       run: |
@@ -107,5 +107,6 @@ jobs:
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
         kubectl set image deployment/myapp-deployment myapp=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
 
 
